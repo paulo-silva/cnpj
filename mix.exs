@@ -10,6 +10,7 @@ defmodule CNPJ.MixProject do
       description: description(),
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],
+      elixirc_paths: elixirc_paths(Mix.env()),
       preferred_cli_env: [
         coveralls: :test,
         "coveralls.detail": :test,
@@ -17,7 +18,8 @@ defmodule CNPJ.MixProject do
         "coveralls.html": :test
       ],
       dialyzer: [
-        plt_file: {:no_warn, "plts/dialyzer.plt"}
+        plt_file: {:no_warn, "plts/dialyzer.plt"},
+        plt_add_apps: [:mix, :ex_unit, :ecto, :ecto_sql]
       ],
       deps: deps()
     ]
@@ -53,6 +55,16 @@ defmodule CNPJ.MixProject do
       {:benchee, "~> 1.0", only: :dev}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+    ] ++ ecto_deps()
+  end
+
+  defp ecto_deps do
+    [
+      {:ecto, "~> 3.2", optional: true},
+      {:ecto_sql, "~> 3.2", only: [:dev, :test], optional: true}
     ]
   end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 end

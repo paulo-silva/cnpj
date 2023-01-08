@@ -1,7 +1,6 @@
 # CNPJ
-
+[![Elixir CI](https://github.com/paulo-silva/cnpj/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/paulo-silva/cnpj/actions/workflows/test.yml)
 [![Hex.pm](https://img.shields.io/hexpm/v/cnpj)](https://www.hex.pm/packages/cnpj)
-[![CircleCI](https://img.shields.io/circleci/build/github/ulissesalmeida/cnpj)](https://circleci.com/gh/ulissesalmeida/cnpj/tree/master)
 [![Coveralls](https://img.shields.io/coveralls/github/ulissesalmeida/cnpj)](https://coveralls.io/github/ulissesalmeida/cnpj?branch=master)
 
 CNPJ is an acronym for "Cadastro Nacional da Pessoa Jurídica," it's a identifier

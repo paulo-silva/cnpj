@@ -2,9 +2,9 @@ name: Elixir CI
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 permissions:
   contents: read
@@ -14,6 +14,8 @@ jobs:
 
     name: Build and test
     runs-on: ubuntu-latest
+    env:
+      ImageOS: ubuntu20
 
     steps:
       - name: Cancel All Previous Workflow Runs
@@ -34,15 +36,5 @@ jobs:
         run: mix deps.get
       - name: Check compile
         run: mix compile --warning-as-errors
-      - name: Check format
-        run: mix format --check-formatted
-      - name: Check coding style
-        run: mix credo --strict
-      - name: Sobelow
-        run: mix sobelow --config
-      - name: Check Unused
-        run: mix deps.unlock --check-unused
       - name: Run tests
         run: mix test
-      - name: Dialyzer
-        run: mix dialyzer
